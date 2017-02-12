@@ -204,10 +204,10 @@ class TSL2561(object):
         if integration_time is not None and integration_time != self._integration_time:
             value = self._register8(_REGISTER_TIMING) & 0x10
             self._register8(_REGISTER_TIMING, value | _INTEGRATION_TIME[integration_time][0])
-            self._integration_time = integration_time
             self._logger.info('Integration time was set to {0}ms (0x{1:x})'.format(integration_time, self._register8(_REGISTER_TIMING)))
             # Wait at least one integration cycle after changing integration_time
             time.sleep(max(_INTEGRATION_TIME[self._integration_time][1], _INTEGRATION_TIME[integration_time][1]) / 1000)            
+            self._integration_time = integration_time
         self.active(was_active)        
 
     def read(self, autogain=False, hdr=False, raw=False):
