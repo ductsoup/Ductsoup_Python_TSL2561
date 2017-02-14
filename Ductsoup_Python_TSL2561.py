@@ -91,8 +91,8 @@ class TSL2561(object):
 
         # Set the hdr status, gain and integration time to the power up state
         self._hdr = None 
-        self._gain = None
-        self._integration_time = None
+        self._gain = 1
+        self._integration_time = 402
         self._update_range(gain=16, integration_time=13)
         self.last_vnir = None
         self.last_ir = None
